@@ -4,20 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ice & Wellness — Mientras esperas</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;}
   html,body{margin:0; height:100%;}
-  body{font-family:'Inter',sans-serif; color:#243746; background:#ECE6DA; display:flex; justify-content:center; align-items:flex-start;}
+  body{font-family:'Inter',sans-serif; color:#4A3C22; background:#D9DEC8; display:flex; justify-content:center; align-items:flex-start;}
   a{color:inherit; text-decoration:none;}
-  .serif{font-family:'Lora',serif;}
-  .opt{display:flex; align-items:center; gap:14px; width:100%; text-align:left; background:#fff; border:1.5px solid #E7E0D3; border-radius:16px; padding:14px; font-family:inherit; cursor:pointer; transition:border-color .15s ease, transform .15s ease;}
-  .opt:hover{border-color:#8A8667;}
+  .serif{font-family:'Baloo 2','Poppins',sans-serif; font-weight:800; letter-spacing:.1px;}
+  .wordmark{font-family:'Lora',serif; font-style:italic; font-weight:600; text-transform:lowercase; letter-spacing:.3px;}
+  .tagline{font-family:'Lora',serif; font-style:italic;}
+  .screen{position:relative; isolation:isolate;}
+  .screen::before{content:"";position:absolute;inset:0;z-index:-1;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27160%27%20height%3D%27160%27%3E%3Cfilter%20id%3D%27n%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.85%27%20numOctaves%3D%272%27%20stitchTiles%3D%27stitch%27%2F%3E%3CfeColorMatrix%20type%3D%27matrix%27%20values%3D%270%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200.05%200%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20filter%3D%27url%28%23n%29%27%2F%3E%3C%2Fsvg%3E");pointer-events:none;}
+
+  .opt{display:flex; align-items:center; gap:14px; width:100%; text-align:left; background:#fff; border:1.5px solid #DCD4B9; border-radius:16px; padding:14px; font-family:inherit; cursor:pointer; transition:border-color .15s ease, transform .15s ease;}
+  .opt:hover{border-color:#7D6E45;}
   .opt:active{transform:scale(.98);}
-  .ic{width:42px; height:42px; border-radius:50%; background:#EDEAD9; color:#8A8667; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
-  .flrow{display:flex; align-items:center; gap:12px; width:100%; text-align:left; background:#fff; border:1.5px solid #E7E0D3; border-radius:14px; padding:11px 13px;}
-  .flic{width:36px; height:36px; border-radius:50%; background:#EDEAD9; color:#8A8667; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
-  .flrow.selected{border-color:#243746; background:#F7F4EC;}
+  .ic{width:42px; height:42px; border-radius:50%; background:#F0ECDC; color:#7D6E45; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .flrow{display:flex; align-items:center; gap:12px; width:100%; text-align:left; background:#fff; border:1.5px solid #DCD4B9; border-radius:14px; padding:11px 13px;}
+  .flic{width:36px; height:36px; border-radius:50%; background:#F0ECDC; color:#7D6E45; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .flrow.selected{border-color:#4A3C22; background:#F2EEDD;}
   .pedido-btn[disabled]{opacity:.4; cursor:not-allowed;}
   .confirm{animation:fadeUp .4s cubic-bezier(.16,.8,.3,1);}
   @keyframes fadeUp{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
@@ -32,7 +37,7 @@
   .flrow:nth-of-type(1){animation-delay:.12s;} .flrow:nth-of-type(2){animation-delay:.22s;} .flrow:nth-of-type(3){animation-delay:.32s;}
   .cta{transition:transform .15s ease;}
   .cta:active{transform:scale(.97);}
-  .screen{width:390px; height:844px; background:#F4EFE6; display:flex; flex-direction:column; box-sizing:border-box; overflow:hidden;}
+  .screen{width:390px; height:844px; background:radial-gradient(130% 90% at 8% -10%, rgba(255,255,255,.5), rgba(255,255,255,0) 55%), linear-gradient(160deg, #CFD8BC 0%, #E2E1D0 40%, #EEEBDE 70%, #D8DEC5 100%); display:flex; flex-direction:column; box-sizing:border-box; overflow:hidden;}
   .hidden{display:none !important;}
   @media (max-width:430px){ .screen{width:100vw; height:100vh;} body{align-items:stretch;} }
 </style>
@@ -43,7 +48,7 @@
 
   <div style="display:flex; align-items:center; justify-content:space-between; padding:20px 22px 6px;">
     <a href="inicio.html" aria-label="Volver a inicio" style="width:34px; height:34px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 1px 3px rgba(0,0,0,.06);">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#243746" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4A3C22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
     </a>
     <h1 class="serif" style="font-size:18px; font-weight:600;">Mientras esperas</h1>
     <div style="width:34px;"></div>
@@ -51,16 +56,18 @@
 
   <!-- Vista 1: la pregunta -->
   <div id="view-pick" style="flex:1; padding:6px 22px 24px; overflow:hidden; display:flex; flex-direction:column;">
-    <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#5B6B74; font-weight:700;">Un momento para ti</div>
-    <h2 class="serif" style="font-size:21px; font-weight:600; margin:8px 0 4px; line-height:1.35;">¿Cómo te sientes<br>justo ahora?</h2>
-    <p style="font-size:12.5px; color:#5B6B74; margin:0 0 18px;">Tu respuesta nos ayuda a sugerirte unos sabores.</p>
+    <svg width="52" height="64" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="margin:0 auto 10px; display:block;"><path d="M20 38 C18 62 16 80 21 94 C33 99 55 99 67 94 C72 80 70 62 68 38 Z" fill="#F2EEDD" stroke="#4A3C22" stroke-width="2.2" stroke-linejoin="round"/><ellipse cx="44" cy="38" rx="24" ry="7" fill="#F2EEDD" stroke="#4A3C22" stroke-width="2.2"/><path d="M33 39 q11 5 22 0" stroke="#4A3C22" stroke-width="1.4" fill="none" stroke-linecap="round"/><line x1="44" y1="39" x2="44" y2="25" stroke="#4A3C22" stroke-width="2.1" stroke-linecap="round"/><path d="M44 6 C49 13 50 19 44 25 C38 19 39 13 44 6 Z" fill="#F2EEDD" stroke="#4A3C22" stroke-width="2.1" stroke-linejoin="round"/><path d="M26 50 q-2 20 1 42" stroke="#4A3C22" stroke-width="1.1" fill="none" stroke-dasharray="1 5" stroke-linecap="round" opacity=".55"/><path d="M31 47 q-2 24 1 46" stroke="#4A3C22" stroke-width="1.1" fill="none" stroke-dasharray="1 5" stroke-linecap="round" opacity=".4"/></svg>
+    <div class="wordmark" style="font-size:13px; color:#7D6E45; text-align:center;">ice &amp; wellness.</div>
+    <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#6E6244; font-weight:700; margin-top:6px; text-align:center;">Un momento para ti</div>
+    <h2 class="serif" style="font-size:22px; font-weight:800; margin:8px 0 4px; line-height:1.3; text-align:center;">¿Cómo te sientes<br>justo ahora?</h2>
+    <p style="font-size:12.5px; color:#6E6244; margin:0 0 18px;">Tu respuesta nos ayuda a sugerirte unos sabores.</p>
 
     <div style="display:flex; flex-direction:column; gap:10px;">
       <button type="button" class="opt" onclick="pick('energia')">
         <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 5 14h5l-1 8 9-13h-6z"/></svg></span>
         <span>
           <span style="display:block; font-weight:700; font-size:14px;">Con energía</span>
-          <span style="display:block; font-size:11.5px; color:#5B6B74;">Lista para seguir el día</span>
+          <span style="display:block; font-size:11.5px; color:#6E6244;">Lista para seguir el día</span>
         </span>
       </button>
 
@@ -68,7 +75,7 @@
         <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19c8 0 14-5 16-15-10 1-15 6-16 15Z"/><path d="M5 18.5C9 15 12 11 14.5 6.5"/></svg></span>
         <span>
           <span style="display:block; font-weight:700; font-size:14px;">Buscando calma</span>
-          <span style="display:block; font-size:11.5px; color:#5B6B74;">Un respiro antes de seguir</span>
+          <span style="display:block; font-size:11.5px; color:#6E6244;">Un respiro antes de seguir</span>
         </span>
       </button>
 
@@ -76,7 +83,7 @@
         <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 5c-2.5 4.5-9.5 9-9.5 9Z"/></svg></span>
         <span>
           <span style="display:block; font-weight:700; font-size:14px;">Antojo dulce</span>
-          <span style="display:block; font-size:11.5px; color:#5B6B74;">Hoy quiero consentirme</span>
+          <span style="display:block; font-size:11.5px; color:#6E6244;">Hoy quiero consentirme</span>
         </span>
       </button>
 
@@ -84,7 +91,7 @@
         <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 2v20M4 7l16 10M20 7 4 17M2 12h20"/></svg></span>
         <span>
           <span style="display:block; font-weight:700; font-size:14px;">Necesito algo fresco</span>
-          <span style="display:block; font-size:11.5px; color:#5B6B74;">El día está pesado</span>
+          <span style="display:block; font-size:11.5px; color:#6E6244;">El día está pesado</span>
         </span>
       </button>
     </div>
@@ -94,120 +101,120 @@
   <div id="view-energia" class="result hidden" style="flex:1; padding:8px 24px 20px; display:flex; flex-direction:column;">
     <div class="result-body" style="display:contents;">
     <div style="text-align:center;">
-      <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#5B6B74; font-weight:700;">Tus sabores recomendados</div>
+      <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#6E6244; font-weight:700;">Tus sabores recomendados</div>
       <div class="ic" style="width:56px; height:56px; margin:12px auto 0;">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 5 14h5l-1 8 9-13h-6z"/></svg>
       </div>
-      <p style="font-size:12.5px; color:#5B6B74; line-height:1.5; margin:10px 0 0;">Porque hoy tienes energía, estos sabores cítricos y vibrantes te van a acompañar bien.</p>
+      <p style="font-size:12.5px; color:#6E6244; line-height:1.5; margin:10px 0 0;">Porque hoy tienes energía, estos sabores cítricos y vibrantes te van a acompañar bien.</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:9px; margin-top:16px;">
-      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Maracuyá y mango</span><span style="display:block; font-size:11px; color:#5B6B74;">Cítrico y tropical</span></span></button>
-      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Naranja y zanahoria</span><span style="display:block; font-size:11px; color:#5B6B74;">Dulce y vitamínico</span></span></button>
-      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Piña colada</span><span style="display:block; font-size:11px; color:#5B6B74;">Fresco y tropical</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Maracuyá y mango</span><span style="display:block; font-size:11px; color:#6E6244;">Cítrico y tropical</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Naranja y zanahoria</span><span style="display:block; font-size:11px; color:#6E6244;">Dulce y vitamínico</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Piña colada</span><span style="display:block; font-size:11px; color:#6E6244;">Fresco y tropical</span></span></button>
     </div>
     <div style="flex:1;"></div>
-    <button type="button" class="cta pedido-btn" disabled onclick="generarPedido(this)" style="display:block; width:100%; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:14px; border:none; font-family:inherit; cursor:pointer;">Generar pedido</button>
-    <button type="button" onclick="reset()" style="margin-top:9px; background:none; border:none; font-size:12px; color:#5B6B74; text-decoration:underline; font-family:inherit; align-self:center;">Elegir otra respuesta</button>
+    <button type="button" class="cta pedido-btn" disabled onclick="generarPedido(this)" style="display:block; width:100%; text-align:center; background:#4A3C22; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:14px; border:none; font-family:inherit; cursor:pointer;">Generar pedido</button>
+    <button type="button" onclick="reset()" style="margin-top:9px; background:none; border:none; font-size:12px; color:#6E6244; text-decoration:underline; font-family:inherit; align-self:center;">Elegir otra respuesta</button>
     </div>
 
     <div class="confirm hidden" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 10px;">
-      <div style="width:64px; height:64px; border-radius:50%; background:#E8C86B; color:#243746; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+      <div style="width:64px; height:64px; border-radius:50%; background:#D9B35C; color:#4A3C22; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
       </div>
       <h2 class="serif" style="font-size:20px; font-weight:600; margin:0;">¡Pedido generado!</h2>
-      <p style="font-size:13.5px; color:#5B6B74; margin:10px 0 2px; line-height:1.5;"><span class="confirm-flavor" style="font-weight:700; color:#243746;"></span></p>
-      <p style="font-size:13.5px; color:#5B6B74; margin:4px 0 0; line-height:1.5;">Preséntate en caja para reclamarlo.</p>
-      <a href="inicio.html" class="cta" style="display:block; width:100%; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:26px;">Volver al inicio</a>
+      <p style="font-size:13.5px; color:#6E6244; margin:10px 0 2px; line-height:1.5;"><span class="confirm-flavor" style="font-weight:700; color:#4A3C22;"></span></p>
+      <p style="font-size:13.5px; color:#6E6244; margin:4px 0 0; line-height:1.5;">Preséntate en caja para reclamarlo.</p>
+      <a href="inicio.html" class="cta" style="display:block; width:100%; text-align:center; background:#4A3C22; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:26px;">Volver al inicio</a>
     </div>
   </div>
 
   <div id="view-calma" class="result hidden" style="flex:1; padding:8px 24px 20px; display:flex; flex-direction:column;">
     <div class="result-body" style="display:contents;">
     <div style="text-align:center;">
-      <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#5B6B74; font-weight:700;">Tus sabores recomendados</div>
+      <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#6E6244; font-weight:700;">Tus sabores recomendados</div>
       <div class="ic" style="width:56px; height:56px; margin:12px auto 0;">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19c8 0 14-5 16-15-10 1-15 6-16 15Z"/><path d="M5 18.5C9 15 12 11 14.5 6.5"/></svg>
       </div>
-      <p style="font-size:12.5px; color:#5B6B74; line-height:1.5; margin:10px 0 0;">Porque hoy buscas calma, estas combinaciones suaves invitan a bajar el ritmo.</p>
+      <p style="font-size:12.5px; color:#6E6244; line-height:1.5; margin:10px 0 0;">Porque hoy buscas calma, estas combinaciones suaves invitan a bajar el ritmo.</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:9px; margin-top:16px;">
-      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Lavanda y miel</span><span style="display:block; font-size:11px; color:#5B6B74;">Floral y suave</span></span></button>
-      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Manzanilla y pera</span><span style="display:block; font-size:11px; color:#5B6B74;">Suave y relajante</span></span></button>
-      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Vainilla y canela</span><span style="display:block; font-size:11px; color:#5B6B74;">Cálido y envolvente</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Lavanda y miel</span><span style="display:block; font-size:11px; color:#6E6244;">Floral y suave</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Manzanilla y pera</span><span style="display:block; font-size:11px; color:#6E6244;">Suave y relajante</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Vainilla y canela</span><span style="display:block; font-size:11px; color:#6E6244;">Cálido y envolvente</span></span></button>
     </div>
     <div style="flex:1;"></div>
-    <button type="button" class="cta pedido-btn" disabled onclick="generarPedido(this)" style="display:block; width:100%; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:14px; border:none; font-family:inherit; cursor:pointer;">Generar pedido</button>
-    <button type="button" onclick="reset()" style="margin-top:9px; background:none; border:none; font-size:12px; color:#5B6B74; text-decoration:underline; font-family:inherit; align-self:center;">Elegir otra respuesta</button>
+    <button type="button" class="cta pedido-btn" disabled onclick="generarPedido(this)" style="display:block; width:100%; text-align:center; background:#4A3C22; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:14px; border:none; font-family:inherit; cursor:pointer;">Generar pedido</button>
+    <button type="button" onclick="reset()" style="margin-top:9px; background:none; border:none; font-size:12px; color:#6E6244; text-decoration:underline; font-family:inherit; align-self:center;">Elegir otra respuesta</button>
     </div>
 
     <div class="confirm hidden" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 10px;">
-      <div style="width:64px; height:64px; border-radius:50%; background:#E8C86B; color:#243746; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+      <div style="width:64px; height:64px; border-radius:50%; background:#D9B35C; color:#4A3C22; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
       </div>
       <h2 class="serif" style="font-size:20px; font-weight:600; margin:0;">¡Pedido generado!</h2>
-      <p style="font-size:13.5px; color:#5B6B74; margin:10px 0 2px; line-height:1.5;"><span class="confirm-flavor" style="font-weight:700; color:#243746;"></span></p>
-      <p style="font-size:13.5px; color:#5B6B74; margin:4px 0 0; line-height:1.5;">Preséntate en caja para reclamarlo.</p>
-      <a href="inicio.html" class="cta" style="display:block; width:100%; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:26px;">Volver al inicio</a>
+      <p style="font-size:13.5px; color:#6E6244; margin:10px 0 2px; line-height:1.5;"><span class="confirm-flavor" style="font-weight:700; color:#4A3C22;"></span></p>
+      <p style="font-size:13.5px; color:#6E6244; margin:4px 0 0; line-height:1.5;">Preséntate en caja para reclamarlo.</p>
+      <a href="inicio.html" class="cta" style="display:block; width:100%; text-align:center; background:#4A3C22; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:26px;">Volver al inicio</a>
     </div>
   </div>
 
   <div id="view-dulce" class="result hidden" style="flex:1; padding:8px 24px 20px; display:flex; flex-direction:column;">
     <div class="result-body" style="display:contents;">
     <div style="text-align:center;">
-      <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#5B6B74; font-weight:700;">Tus sabores recomendados</div>
+      <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#6E6244; font-weight:700;">Tus sabores recomendados</div>
       <div class="ic" style="width:56px; height:56px; margin:12px auto 0;">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 5c-2.5 4.5-9.5 9-9.5 9Z"/></svg>
       </div>
-      <p style="font-size:12.5px; color:#5B6B74; line-height:1.5; margin:10px 0 0;">Porque hoy quieres consentirte, estas mezclas intensas te van a dar ese gusto.</p>
+      <p style="font-size:12.5px; color:#6E6244; line-height:1.5; margin:10px 0 0;">Porque hoy quieres consentirte, estas mezclas intensas te van a dar ese gusto.</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:9px; margin-top:16px;">
-      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Dulce de leche con brownie</span><span style="display:block; font-size:11px; color:#5B6B74;">Intenso y achocolatado</span></span></button>
-      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Nutella con avellanas</span><span style="display:block; font-size:11px; color:#5B6B74;">Cremoso y nuezado</span></span></button>
-      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Red velvet</span><span style="display:block; font-size:11px; color:#5B6B74;">Suave con toque de cacao</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Dulce de leche con brownie</span><span style="display:block; font-size:11px; color:#6E6244;">Intenso y achocolatado</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Nutella con avellanas</span><span style="display:block; font-size:11px; color:#6E6244;">Cremoso y nuezado</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Red velvet</span><span style="display:block; font-size:11px; color:#6E6244;">Suave con toque de cacao</span></span></button>
     </div>
     <div style="flex:1;"></div>
-    <button type="button" class="cta pedido-btn" disabled onclick="generarPedido(this)" style="display:block; width:100%; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:14px; border:none; font-family:inherit; cursor:pointer;">Generar pedido</button>
-    <button type="button" onclick="reset()" style="margin-top:9px; background:none; border:none; font-size:12px; color:#5B6B74; text-decoration:underline; font-family:inherit; align-self:center;">Elegir otra respuesta</button>
+    <button type="button" class="cta pedido-btn" disabled onclick="generarPedido(this)" style="display:block; width:100%; text-align:center; background:#4A3C22; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:14px; border:none; font-family:inherit; cursor:pointer;">Generar pedido</button>
+    <button type="button" onclick="reset()" style="margin-top:9px; background:none; border:none; font-size:12px; color:#6E6244; text-decoration:underline; font-family:inherit; align-self:center;">Elegir otra respuesta</button>
     </div>
 
     <div class="confirm hidden" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 10px;">
-      <div style="width:64px; height:64px; border-radius:50%; background:#E8C86B; color:#243746; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+      <div style="width:64px; height:64px; border-radius:50%; background:#D9B35C; color:#4A3C22; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
       </div>
       <h2 class="serif" style="font-size:20px; font-weight:600; margin:0;">¡Pedido generado!</h2>
-      <p style="font-size:13.5px; color:#5B6B74; margin:10px 0 2px; line-height:1.5;"><span class="confirm-flavor" style="font-weight:700; color:#243746;"></span></p>
-      <p style="font-size:13.5px; color:#5B6B74; margin:4px 0 0; line-height:1.5;">Preséntate en caja para reclamarlo.</p>
-      <a href="inicio.html" class="cta" style="display:block; width:100%; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:26px;">Volver al inicio</a>
+      <p style="font-size:13.5px; color:#6E6244; margin:10px 0 2px; line-height:1.5;"><span class="confirm-flavor" style="font-weight:700; color:#4A3C22;"></span></p>
+      <p style="font-size:13.5px; color:#6E6244; margin:4px 0 0; line-height:1.5;">Preséntate en caja para reclamarlo.</p>
+      <a href="inicio.html" class="cta" style="display:block; width:100%; text-align:center; background:#4A3C22; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:26px;">Volver al inicio</a>
     </div>
   </div>
 
   <div id="view-fresco" class="result hidden" style="flex:1; padding:8px 24px 20px; display:flex; flex-direction:column;">
     <div class="result-body" style="display:contents;">
     <div style="text-align:center;">
-      <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#5B6B74; font-weight:700;">Tus sabores recomendados</div>
+      <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#6E6244; font-weight:700;">Tus sabores recomendados</div>
       <div class="ic" style="width:56px; height:56px; margin:12px auto 0;">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 2v20M4 7l16 10M20 7 4 17M2 12h20"/></svg>
       </div>
-      <p style="font-size:12.5px; color:#5B6B74; line-height:1.5; margin:10px 0 0;">Porque sientes el día pesado, estos sabores ligeros refrescan al instante.</p>
+      <p style="font-size:12.5px; color:#6E6244; line-height:1.5; margin:10px 0 0;">Porque sientes el día pesado, estos sabores ligeros refrescan al instante.</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:9px; margin-top:16px;">
-      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Menta y limón</span><span style="display:block; font-size:11px; color:#5B6B74;">Ligero y cítrico</span></span></button>
-      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Sandía y hierbabuena</span><span style="display:block; font-size:11px; color:#5B6B74;">Fresco de verano</span></span></button>
-      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Yogurt griego con frutos rojos</span><span style="display:block; font-size:11px; color:#5B6B74;">Ligero y balanceado</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Menta y limón</span><span style="display:block; font-size:11px; color:#6E6244;">Ligero y cítrico</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Sandía y hierbabuena</span><span style="display:block; font-size:11px; color:#6E6244;">Fresco de verano</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Yogurt griego con frutos rojos</span><span style="display:block; font-size:11px; color:#6E6244;">Ligero y balanceado</span></span></button>
     </div>
     <div style="flex:1;"></div>
-    <button type="button" class="cta pedido-btn" disabled onclick="generarPedido(this)" style="display:block; width:100%; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:14px; border:none; font-family:inherit; cursor:pointer;">Generar pedido</button>
-    <button type="button" onclick="reset()" style="margin-top:9px; background:none; border:none; font-size:12px; color:#5B6B74; text-decoration:underline; font-family:inherit; align-self:center;">Elegir otra respuesta</button>
+    <button type="button" class="cta pedido-btn" disabled onclick="generarPedido(this)" style="display:block; width:100%; text-align:center; background:#4A3C22; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:14px; border:none; font-family:inherit; cursor:pointer;">Generar pedido</button>
+    <button type="button" onclick="reset()" style="margin-top:9px; background:none; border:none; font-size:12px; color:#6E6244; text-decoration:underline; font-family:inherit; align-self:center;">Elegir otra respuesta</button>
     </div>
 
     <div class="confirm hidden" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 10px;">
-      <div style="width:64px; height:64px; border-radius:50%; background:#E8C86B; color:#243746; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+      <div style="width:64px; height:64px; border-radius:50%; background:#D9B35C; color:#4A3C22; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
       </div>
       <h2 class="serif" style="font-size:20px; font-weight:600; margin:0;">¡Pedido generado!</h2>
-      <p style="font-size:13.5px; color:#5B6B74; margin:10px 0 2px; line-height:1.5;"><span class="confirm-flavor" style="font-weight:700; color:#243746;"></span></p>
-      <p style="font-size:13.5px; color:#5B6B74; margin:4px 0 0; line-height:1.5;">Preséntate en caja para reclamarlo.</p>
-      <a href="inicio.html" class="cta" style="display:block; width:100%; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:26px;">Volver al inicio</a>
+      <p style="font-size:13.5px; color:#6E6244; margin:10px 0 2px; line-height:1.5;"><span class="confirm-flavor" style="font-weight:700; color:#4A3C22;"></span></p>
+      <p style="font-size:13.5px; color:#6E6244; margin:4px 0 0; line-height:1.5;">Preséntate en caja para reclamarlo.</p>
+      <a href="inicio.html" class="cta" style="display:block; width:100%; text-align:center; background:#4A3C22; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:26px;">Volver al inicio</a>
     </div>
   </div>
 

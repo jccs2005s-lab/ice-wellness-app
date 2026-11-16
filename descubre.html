@@ -4,21 +4,26 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ice & Wellness — Descubre</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;}
   html,body{margin:0; height:100%;}
-  body{font-family:'Inter',sans-serif; color:#243746; background:#ECE6DA; display:flex; justify-content:center; align-items:flex-start;}
-  a{color:#8A8667; text-decoration:none;}
+  body{font-family:'Inter',sans-serif; color:#4A3C22; background:#D9DEC8; display:flex; justify-content:center; align-items:flex-start;}
+  a{color:#7D6E45; text-decoration:none;}
   a:hover{color:#6f6c53;}
-  .serif{font-family:'Lora',serif;}
+  .serif{font-family:'Baloo 2','Poppins',sans-serif; font-weight:800; letter-spacing:.1px;}
+  .wordmark{font-family:'Lora',serif; font-style:italic; font-weight:600; text-transform:lowercase; letter-spacing:.3px;}
+  .tagline{font-family:'Lora',serif; font-style:italic;}
+  .screen{position:relative; isolation:isolate;}
+  .screen::before{content:"";position:absolute;inset:0;z-index:-1;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27160%27%20height%3D%27160%27%3E%3Cfilter%20id%3D%27n%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.85%27%20numOctaves%3D%272%27%20stitchTiles%3D%27stitch%27%2F%3E%3CfeColorMatrix%20type%3D%27matrix%27%20values%3D%270%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200.05%200%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20filter%3D%27url%28%23n%29%27%2F%3E%3C%2Fsvg%3E");pointer-events:none;}
+
   @keyframes fadeUp{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
   .screen{animation:fadeUp .5s cubic-bezier(.16,.8,.3,1);}
   .cta{transition:transform .15s ease;}
   .cta:active{transform:scale(.97);}
   .iconbtn{transition:transform .15s ease;}
   .iconbtn:active{transform:scale(.9);}
-  .screen{width:390px; height:844px; background:#F4EFE6; display:flex; flex-direction:column; box-sizing:border-box; overflow:hidden;}
+  .screen{width:390px; height:844px; background:radial-gradient(130% 90% at 8% -10%, rgba(255,255,255,.5), rgba(255,255,255,0) 55%), linear-gradient(160deg, #CFD8BC 0%, #E2E1D0 40%, #EEEBDE 70%, #D8DEC5 100%); display:flex; flex-direction:column; box-sizing:border-box; overflow:hidden;}
   @media (max-width:430px){ .screen{width:100vw; height:100vh;} body{align-items:stretch;} }
 </style>
 </head>
@@ -28,7 +33,7 @@
 
   <div style="position:relative; width:100%; height:300px; border-radius:0 0 28px 28px; overflow:hidden; flex-shrink:0;">
     <img src="kitchen.jpg" alt="Persona guardando un envase vacío en su cocina" style="width:100%; height:100%; object-fit:cover; display:block;">
-    <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(36,55,70,0) 35%, rgba(36,55,70,.78) 100%);"></div>
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(74,60,34,0) 35%, rgba(74,60,34,.78) 100%);"></div>
     <div style="position:absolute; left:24px; right:24px; bottom:22px; color:#fff;">
       <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; opacity:.85; font-weight:600;">Antes de tu visita</div>
       <h1 class="serif" style="font-size:26px; font-weight:600; line-height:1.2; margin:6px 0 0;">Conoce lo<br>que comes</h1>
@@ -36,30 +41,30 @@
   </div>
 
   <div style="flex:1; padding:22px 24px; display:flex; flex-direction:column;">
-    <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#5B6B74; font-weight:700; margin-bottom:10px;">Transparencia nutricional</div>
+    <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#6E6244; font-weight:700; margin-bottom:10px;">Transparencia nutricional</div>
 
     <div style="display:flex; gap:8px; flex-wrap:wrap;">
-      <span style="background:#EDEAD9; color:#8A8667; font-size:12px; font-weight:600; padding:8px 13px; border-radius:20px;">Probióticos vivos</span>
-      <span style="background:#EDEAD9; color:#8A8667; font-size:12px; font-weight:600; padding:8px 13px; border-radius:20px;">Sin azúcar añadida</span>
-      <span style="background:#EDEAD9; color:#8A8667; font-size:12px; font-weight:600; padding:8px 13px; border-radius:20px;">Ingredientes locales</span>
+      <span style="background:#F0ECDC; color:#7D6E45; font-size:12px; font-weight:600; padding:8px 13px; border-radius:20px;">Probióticos vivos</span>
+      <span style="background:#F0ECDC; color:#7D6E45; font-size:12px; font-weight:600; padding:8px 13px; border-radius:20px;">Sin azúcar añadida</span>
+      <span style="background:#F0ECDC; color:#7D6E45; font-size:12px; font-weight:600; padding:8px 13px; border-radius:20px;">Ingredientes locales</span>
     </div>
 
-    <p style="margin-top:16px; font-size:14px; line-height:1.55; color:#5B6B74;">
+    <p style="margin-top:16px; font-size:14px; line-height:1.55; color:#6E6244;">
       Cada sabor muestra su lista de ingredientes y su aporte nutricional antes
       de que decidas. Así sabes exactamente qué estás llevando a tu cuerpo.
     </p>
 
     <div style="flex:1;"></div>
 
-    <a href="inicio.html" class="cta" style="display:flex; align-items:center; justify-content:center; gap:8px; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:16px; border-radius:16px; text-decoration:none;">
+    <a href="inicio.html" class="cta" style="display:flex; align-items:center; justify-content:center; gap:8px; background:#4A3C22; color:#fff; font-weight:600; font-size:15px; padding:16px; border-radius:16px; text-decoration:none;">
       Ver el menú de hoy
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
 
     <div style="display:flex; gap:6px; justify-content:center; margin-top:14px;">
-      <div style="width:18px; height:6px; border-radius:3px; background:#8A8667;"></div>
-      <div style="width:6px; height:6px; border-radius:50%; background:#E7E0D3;"></div>
-      <div style="width:6px; height:6px; border-radius:50%; background:#E7E0D3;"></div>
+      <div style="width:18px; height:6px; border-radius:3px; background:#7D6E45;"></div>
+      <div style="width:6px; height:6px; border-radius:50%; background:#DCD4B9;"></div>
+      <div style="width:6px; height:6px; border-radius:50%; background:#DCD4B9;"></div>
     </div>
   </div>
 </div>

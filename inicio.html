@@ -4,22 +4,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ice & Wellness — Inicio</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;}
   html,body{margin:0; height:100%;}
-  body{font-family:'Inter',sans-serif; color:#243746; background:#ECE6DA; display:flex; justify-content:center; align-items:flex-start;}
+  body{font-family:'Inter',sans-serif; color:#4A3C22; background:#D9DEC8; display:flex; justify-content:center; align-items:flex-start;}
   a{color:inherit; text-decoration:none;}
-  .serif{font-family:'Lora',serif;}
-  .navitem{display:flex; flex-direction:column; align-items:center; gap:4px; font-size:10.5px; font-weight:600; color:#B9B2A0;}
-  .navitem.active{color:#243746;}
+  .serif{font-family:'Baloo 2','Poppins',sans-serif; font-weight:800; letter-spacing:.1px;}
+  .wordmark{font-family:'Lora',serif; font-style:italic; font-weight:600; text-transform:lowercase; letter-spacing:.3px;}
+  .tagline{font-family:'Lora',serif; font-style:italic;}
+  .screen{position:relative; isolation:isolate;}
+  .screen::before{content:"";position:absolute;inset:0;z-index:-1;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27160%27%20height%3D%27160%27%3E%3Cfilter%20id%3D%27n%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.85%27%20numOctaves%3D%272%27%20stitchTiles%3D%27stitch%27%2F%3E%3CfeColorMatrix%20type%3D%27matrix%27%20values%3D%270%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200.05%200%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20filter%3D%27url%28%23n%29%27%2F%3E%3C%2Fsvg%3E");pointer-events:none;}
+
+  .navitem{display:flex; flex-direction:column; align-items:center; gap:4px; font-size:10.5px; font-weight:600; color:#ABA183;}
+  .navitem.active{color:#4A3C22;}
   .navcircle{width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center;}
-  .navitem.active .navcircle{background:#EDEAD9; color:#8A8667;}
+  .navitem.active .navcircle{background:#F0ECDC; color:#7D6E45;}
   @keyframes fadeUp{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
   .screen{animation:fadeUp .5s cubic-bezier(.16,.8,.3,1);}
   .cta{transition:transform .15s ease;}
   .cta:active{transform:scale(.97);}
-  .screen{width:390px; height:844px; background:#F4EFE6; display:flex; flex-direction:column; box-sizing:border-box; overflow:hidden; position:relative;}
+  .screen{width:390px; height:844px; background:radial-gradient(130% 90% at 8% -10%, rgba(255,255,255,.5), rgba(255,255,255,0) 55%), linear-gradient(160deg, #CFD8BC 0%, #E2E1D0 40%, #EEEBDE 70%, #D8DEC5 100%); display:flex; flex-direction:column; box-sizing:border-box; overflow:hidden; position:relative;}
   @media (max-width:430px){ .screen{width:100vw; height:100vh;} body{align-items:stretch;} }
 </style>
 </head>
@@ -27,22 +32,22 @@
 
 <div class="screen">
 
-  <div style="position:absolute; width:170px; height:170px; border-radius:50%; background:#D1E4F0; top:-60px; right:-60px; z-index:0;"></div>
+  <div style="position:absolute; width:170px; height:170px; border-radius:50%; background:#D7E0C4; top:-60px; right:-60px; z-index:0;"></div>
 
   <div style="position:relative; z-index:1; flex:1; padding:28px 24px 0; overflow:hidden;">
     <div style="display:flex; justify-content:space-between; align-items:flex-start;">
       <div>
-        <div style="font-size:13px; color:#5B6B74; font-weight:600;">Hola, Laura</div>
+        <div style="font-size:13px; color:#6E6244; font-weight:600;">Hola, Laura</div>
         <h1 class="serif" style="font-size:23px; font-weight:600; margin:2px 0 0;">Tu rutina de hoy</h1>
       </div>
       <div style="width:36px; height:36px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 1px 3px rgba(0,0,0,.08); flex-shrink:0;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#243746" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 10a6 6 0 0 1 12 0c0 4 1.5 5.5 1.5 5.5h-15S6 14 6 10Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A3C22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 10a6 6 0 0 1 12 0c0 4 1.5 5.5 1.5 5.5h-15S6 14 6 10Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
       </div>
     </div>
 
-    <a href="pregunta.html" class="cta" style="display:block; margin-top:20px; background:#243746; color:#fff; border-radius:20px; padding:18px;">
-      <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#C9D2D6; font-weight:700;">Un momento para ti</div>
-      <p class="serif" style="font-size:17px; margin:8px 0 0; line-height:1.4;">
+    <a href="pregunta.html" class="cta" style="display:block; margin-top:20px; background:#4A3C22; color:#fff; border-radius:20px; padding:18px;">
+      <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#E8E0C8; font-weight:700;">Un momento para ti</div>
+      <p class="tagline" style="font-size:17px; margin:8px 0 0; line-height:1.4;">
         "¿Cómo te sientes justo ahora?"
       </p>
       <span style="margin-top:14px; background:rgba(255,255,255,.14); display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:12px; font-size:13px; font-weight:600;">
@@ -51,36 +56,36 @@
       </span>
     </a>
 
-    <a href="puntos.html" style="margin-top:14px; background:#fff; border-radius:20px; padding:16px 18px; box-shadow:0 2px 10px rgba(36,55,70,.06); display:flex; align-items:center; gap:16px;">
+    <a href="puntos.html" style="margin-top:14px; background:#fff; border-radius:20px; padding:16px 18px; box-shadow:0 2px 10px rgba(74,60,34,.06); display:flex; align-items:center; gap:16px;">
       <svg width="58" height="58" viewBox="0 0 64 64" aria-hidden="true">
-        <circle cx="32" cy="32" r="27" fill="none" stroke="#EDEAD9" stroke-width="7"/>
-        <circle cx="32" cy="32" r="27" fill="none" stroke="#8A8667" stroke-width="7" stroke-dasharray="169.6" stroke-dashoffset="67.8" stroke-linecap="round" transform="rotate(-90 32 32)"/>
-        <text x="32" y="37" text-anchor="middle" font-family="Lora" font-size="16" font-weight="600" fill="#243746">3/5</text>
+        <circle cx="32" cy="32" r="27" fill="none" stroke="#F0ECDC" stroke-width="7"/>
+        <circle cx="32" cy="32" r="27" fill="none" stroke="#7D6E45" stroke-width="7" stroke-dasharray="169.6" stroke-dashoffset="67.8" stroke-linecap="round" transform="rotate(-90 32 32)"/>
+        <text x="32" y="37" text-anchor="middle" font-family="Lora" font-size="16" font-weight="600" fill="#4A3C22">3/5</text>
       </svg>
       <div>
         <div style="font-weight:700; font-size:15px;">Tu progreso de envases</div>
-        <div style="font-size:12.5px; color:#5B6B74; margin-top:3px;">Te faltan 2 para tu clase gratis</div>
+        <div style="font-size:12.5px; color:#6E6244; margin-top:3px;">Te faltan 2 para tu clase gratis</div>
       </div>
     </a>
 
-    <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#5B6B74; font-weight:700; margin:20px 0 10px;">Accesos rápidos</div>
+    <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#6E6244; font-weight:700; margin:20px 0 10px;">Accesos rápidos</div>
     <div style="display:flex; gap:10px;">
-      <a href="reciclar.html" style="flex:1; background:#fff; border-radius:16px; text-align:center; padding:14px 8px; box-shadow:0 2px 10px rgba(36,55,70,.06);">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A8667" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin:0 auto; display:block;"><path d="M20 11A8 8 0 0 0 6.3 6.3L4 8.6"/><path d="M4 4v4.6h4.6"/><path d="M4 13a8 8 0 0 0 13.7 4.7L20 15.4"/><path d="M20 20v-4.6h-4.6"/></svg>
+      <a href="reciclar.html" style="flex:1; background:#fff; border-radius:16px; text-align:center; padding:14px 8px; box-shadow:0 2px 10px rgba(74,60,34,.06);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7D6E45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin:0 auto; display:block;"><path d="M20 11A8 8 0 0 0 6.3 6.3L4 8.6"/><path d="M4 4v4.6h4.6"/><path d="M4 13a8 8 0 0 0 13.7 4.7L20 15.4"/><path d="M20 20v-4.6h-4.6"/></svg>
         <div style="font-size:11.5px; font-weight:600; margin-top:6px;">Reciclar</div>
       </a>
-      <a href="puntos.html" style="flex:1; background:#fff; border-radius:16px; text-align:center; padding:14px 8px; box-shadow:0 2px 10px rgba(36,55,70,.06);">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A8667" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true" style="margin:0 auto; display:block;"><path d="M12 3.5l2.6 5.4 5.9.7-4.3 4.1 1 5.9L12 16.8l-5.2 2.8 1-5.9-4.3-4.1 5.9-.7z"/></svg>
+      <a href="puntos.html" style="flex:1; background:#fff; border-radius:16px; text-align:center; padding:14px 8px; box-shadow:0 2px 10px rgba(74,60,34,.06);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7D6E45" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true" style="margin:0 auto; display:block;"><path d="M12 3.5l2.6 5.4 5.9.7-4.3 4.1 1 5.9L12 16.8l-5.2 2.8 1-5.9-4.3-4.1 5.9-.7z"/></svg>
         <div style="font-size:11.5px; font-weight:600; margin-top:6px;">Puntos</div>
       </a>
-      <a href="compartir.html" style="flex:1; background:#fff; border-radius:16px; text-align:center; padding:14px 8px; box-shadow:0 2px 10px rgba(36,55,70,.06);">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A8667" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin:0 auto; display:block;"><circle cx="6" cy="12" r="2.4"/><circle cx="17" cy="5.5" r="2.4"/><circle cx="17" cy="18.5" r="2.4"/><path d="M8.1 10.8 14.9 7M8.1 13.2 14.9 17"/></svg>
+      <a href="compartir.html" style="flex:1; background:#fff; border-radius:16px; text-align:center; padding:14px 8px; box-shadow:0 2px 10px rgba(74,60,34,.06);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7D6E45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin:0 auto; display:block;"><circle cx="6" cy="12" r="2.4"/><circle cx="17" cy="5.5" r="2.4"/><circle cx="17" cy="18.5" r="2.4"/><path d="M8.1 10.8 14.9 7M8.1 13.2 14.9 17"/></svg>
         <div style="font-size:11.5px; font-weight:600; margin-top:6px;">Compartir</div>
       </a>
     </div>
   </div>
 
-  <nav style="position:relative; z-index:1; display:flex; justify-content:space-around; align-items:center; padding:12px 10px 22px; background:#fff; border-top:1px solid #E7E0D3;" aria-label="Navegación principal">
+  <nav style="position:relative; z-index:1; display:flex; justify-content:space-around; align-items:center; padding:12px 10px 22px; background:#fff; border-top:1px solid #DCD4B9;" aria-label="Navegación principal">
     <a href="inicio.html" class="navitem active" aria-current="page">
       <span class="navcircle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-9"/></svg></span>
       Inicio

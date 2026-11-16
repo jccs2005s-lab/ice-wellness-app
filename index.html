@@ -4,30 +4,35 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ice & Wellness</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;}
   html,body{margin:0; height:100%;}
-  body{font-family:'Inter',sans-serif; color:#243746; background:#ECE6DA; display:flex; justify-content:center; align-items:flex-start;}
+  body{font-family:'Inter',sans-serif; color:#4A3C22; background:#D9DEC8; display:flex; justify-content:center; align-items:flex-start;}
   a{color:inherit; text-decoration:none;}
-  .serif{font-family:'Lora',serif;}
+  .serif{font-family:'Baloo 2','Poppins',sans-serif; font-weight:800; letter-spacing:.1px;}
+  .wordmark{font-family:'Lora',serif; font-style:italic; font-weight:600; text-transform:lowercase; letter-spacing:.3px;}
+  .tagline{font-family:'Lora',serif; font-style:italic;}
+  .screen{position:relative; isolation:isolate;}
+  .screen::before{content:"";position:absolute;inset:0;z-index:-1;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27160%27%20height%3D%27160%27%3E%3Cfilter%20id%3D%27n%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.85%27%20numOctaves%3D%272%27%20stitchTiles%3D%27stitch%27%2F%3E%3CfeColorMatrix%20type%3D%27matrix%27%20values%3D%270%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200.05%200%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20filter%3D%27url%28%23n%29%27%2F%3E%3C%2Fsvg%3E");pointer-events:none;}
+
 
   @keyframes fadeUp{from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);}}
   @keyframes floatY{0%,100%{transform:translateY(0);} 50%{transform:translateY(-14px);}}
   @keyframes popIn{from{opacity:0; transform:scale(.5) rotate(-12deg);} to{opacity:1; transform:scale(1) rotate(0);}}
-  @keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(138,134,103,.25);} 50%{box-shadow:0 0 0 14px rgba(138,134,103,0);}}
+  @keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(125,110,69,.25);} 50%{box-shadow:0 0 0 14px rgba(125,110,69,0);}}
   @keyframes dotPulse{0%,100%{opacity:.3; transform:scale(1);} 50%{opacity:1; transform:scale(1.25);}}
 
   .fu{opacity:0; animation:fadeUp .7s cubic-bezier(.16,.8,.3,1) forwards;}
   .d1{animation-delay:.1s;} .d2{animation-delay:.35s;} .d3{animation-delay:.55s;} .d4{animation-delay:.75s;} .d5{animation-delay:.95s;}
   .float{animation:floatY 7s ease-in-out infinite;}
   .icwrap{opacity:0; animation:popIn .65s cubic-bezier(.34,1.56,.64,1) .1s forwards, glow 2.4s ease-in-out 1s infinite;}
-  .dot{display:inline-block; width:6px; height:6px; border-radius:50%; background:#8A8667; animation:dotPulse 1.2s ease-in-out infinite;}
+  .dot{display:inline-block; width:6px; height:6px; border-radius:50%; background:#7D6E45; animation:dotPulse 1.2s ease-in-out infinite;}
   .dot:nth-of-type(2){animation-delay:.15s;} .dot:nth-of-type(3){animation-delay:.3s;}
   .cta{transition:transform .15s ease;}
   .cta:active{transform:scale(.96);}
 
-  .screen{width:390px; height:844px; background:#F4EFE6; box-sizing:border-box; overflow:hidden; position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;}
+  .screen{width:390px; height:844px; background:radial-gradient(130% 90% at 8% -10%, rgba(255,255,255,.5), rgba(255,255,255,0) 55%), linear-gradient(160deg, #CFD8BC 0%, #E2E1D0 40%, #EEEBDE 70%, #D8DEC5 100%); box-sizing:border-box; overflow:hidden; position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;}
   @media (max-width:430px){ .screen{width:100vw; height:100vh;} body{align-items:stretch;} }
 </style>
 </head>
@@ -35,23 +40,23 @@
 
 <div class="screen">
 
-  <div class="float" style="position:absolute; width:260px; height:260px; border-radius:50%; background:#D1E4F0; top:-110px; right:-90px;"></div>
-  <div class="float" style="position:absolute; width:180px; height:180px; border-radius:50%; background:#F1D3D6; bottom:-70px; left:-70px; animation-delay:1s; animation-duration:8s;"></div>
-  <div class="float" style="position:absolute; width:110px; height:110px; border-radius:50%; background:#EDEAD9; bottom:120px; right:-30px; animation-delay:.5s; animation-duration:6s;"></div>
+  <div class="float" style="position:absolute; width:260px; height:260px; border-radius:50%; background:#D7E0C4; top:-110px; right:-90px;"></div>
+  <div class="float" style="position:absolute; width:180px; height:180px; border-radius:50%; background:#E8CDBB; bottom:-70px; left:-70px; animation-delay:1s; animation-duration:8s;"></div>
+  <div class="float" style="position:absolute; width:110px; height:110px; border-radius:50%; background:#F0ECDC; bottom:120px; right:-30px; animation-delay:.5s; animation-duration:6s;"></div>
 
   <div style="position:relative; z-index:1; padding:0 40px;">
-    <div class="icwrap" style="width:84px; height:84px; border-radius:50%; background:#EDEAD9; color:#8A8667; display:flex; align-items:center; justify-content:center; margin:0 auto;">
+    <div class="icwrap" style="width:84px; height:84px; border-radius:50%; background:#F0ECDC; color:#7D6E45; display:flex; align-items:center; justify-content:center; margin:0 auto;">
       <svg width="38" height="38" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8Z"/>
         <path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8Z"/>
       </svg>
     </div>
 
-    <div class="fu d1" style="font-size:11.5px; letter-spacing:2.5px; text-transform:uppercase; color:#8A8667; font-weight:700; margin-top:22px;">Bienestar · Reciclaje · Recompensas</div>
-    <h1 class="serif fu d2" style="font-size:40px; font-weight:600; margin:10px 0 0; line-height:1.1;">Ice &amp; Wellness</h1>
-    <p class="serif fu d3" style="font-size:15px; font-style:italic; color:#5B6B74; margin:10px 0 0;">Cuidarse nunca se vió tan bien</p>
+    <div class="wordmark fu d1" style="font-size:15px; color:#7D6E45; margin-top:22px;">ice &amp; wellness.</div>
+    <h1 class="serif fu d2" style="font-size:36px; font-weight:800; margin:12px 0 0; line-height:1.18;">Tu momento<br>de bienestar</h1>
+    <p class="tagline fu d3" style="font-size:15px; color:#6E6244; margin:12px 0 0;">Cuidarse nunca se vió tan bien</p>
 
-    <a href="descubre.html" class="cta fu d4" style="display:inline-flex; align-items:center; justify-content:center; gap:8px; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px 34px; border-radius:30px; margin-top:34px;">
+    <a href="descubre.html" class="cta fu d4" style="display:inline-flex; align-items:center; justify-content:center; gap:8px; background:#4A3C22; color:#fff; font-weight:600; font-size:15px; padding:15px 34px; border-radius:30px; margin-top:34px;">
       Comenzar
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
