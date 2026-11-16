@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ice & Wellness — Descubre</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0; height:100%;}
+  body{font-family:'Inter',sans-serif; color:#243746; background:#ECE6DA; display:flex; justify-content:center; align-items:flex-start;}
+  a{color:#8A8667; text-decoration:none;}
+  a:hover{color:#6f6c53;}
+  .serif{font-family:'Lora',serif;}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
+  .screen{animation:fadeUp .5s cubic-bezier(.16,.8,.3,1);}
+  .cta{transition:transform .15s ease;}
+  .cta:active{transform:scale(.97);}
+  .iconbtn{transition:transform .15s ease;}
+  .iconbtn:active{transform:scale(.9);}
+  .screen{width:390px; height:844px; background:#F4EFE6; display:flex; flex-direction:column; box-sizing:border-box; overflow:hidden;}
+  @media (max-width:430px){ .screen{width:100vw; height:100vh;} body{align-items:stretch;} }
+</style>
+</head>
+<body>
+
+<div class="screen">
+
+  <div style="position:relative; width:100%; height:300px; border-radius:0 0 28px 28px; overflow:hidden; flex-shrink:0; background:linear-gradient(135deg,#D1E4F0,#BCD1CA);">
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(36,55,70,0) 35%, rgba(36,55,70,.78) 100%);"></div>
+    <div style="position:absolute; top:18px; right:22px; color:#243746; opacity:.55;">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 10a6 6 0 0 1 12 0c0 4 1.5 5.5 1.5 5.5h-15S6 14 6 10Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+    </div>
+    <div style="position:absolute; left:24px; right:24px; bottom:22px; color:#fff;">
+      <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; opacity:.85; font-weight:600;">Antes de tu visita</div>
+      <h1 class="serif" style="font-size:26px; font-weight:600; line-height:1.2; margin:6px 0 0;">Conoce lo<br>que comes</h1>
+    </div>
+  </div>
+
+  <div style="flex:1; padding:22px 24px; display:flex; flex-direction:column;">
+    <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#5B6B74; font-weight:700; margin-bottom:10px;">Transparencia nutricional</div>
+
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <span style="background:#EDEAD9; color:#8A8667; font-size:12px; font-weight:600; padding:8px 13px; border-radius:20px;">Probióticos vivos</span>
+      <span style="background:#EDEAD9; color:#8A8667; font-size:12px; font-weight:600; padding:8px 13px; border-radius:20px;">Sin azúcar añadida</span>
+      <span style="background:#EDEAD9; color:#8A8667; font-size:12px; font-weight:600; padding:8px 13px; border-radius:20px;">Ingredientes locales</span>
+    </div>
+
+    <p style="margin-top:16px; font-size:14px; line-height:1.55; color:#5B6B74;">
+      Cada sabor muestra su lista de ingredientes y su aporte nutricional antes
+      de que decidas. Así sabes exactamente qué estás llevando a tu cuerpo.
+    </p>
+
+    <div style="flex:1;"></div>
+
+    <a href="inicio.html" class="cta" style="display:flex; align-items:center; justify-content:center; gap:8px; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:16px; border-radius:16px; text-decoration:none;">
+      Ver el menú de hoy
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+
+    <div style="display:flex; gap:6px; justify-content:center; margin-top:14px;">
+      <div style="width:18px; height:6px; border-radius:3px; background:#8A8667;"></div>
+      <div style="width:6px; height:6px; border-radius:50%; background:#E7E0D3;"></div>
+      <div style="width:6px; height:6px; border-radius:50%; background:#E7E0D3;"></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

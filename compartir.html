@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ice & Wellness — Compartir</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0; height:100%;}
+  body{font-family:'Inter',sans-serif; color:#243746; background:#ECE6DA; display:flex; justify-content:center; align-items:flex-start;}
+  a{color:inherit; text-decoration:none;}
+  .serif{font-family:'Lora',serif;}
+  .navitem{display:flex; flex-direction:column; align-items:center; gap:4px; font-size:10.5px; font-weight:600; color:#B9B2A0;}
+  .navitem.active{color:#243746;}
+  .navcircle{width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center;}
+  .navitem.active .navcircle{background:#EDEAD9; color:#8A8667;}
+  textarea{font-family:'Inter',sans-serif;}
+  button{font-family:inherit;}
+  .lbl{font-size:10.5px; font-weight:700; color:#5B6B74; text-transform:uppercase; letter-spacing:1px;}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
+  .screen{animation:fadeUp .5s cubic-bezier(.16,.8,.3,1);}
+  .cta{transition:transform .15s ease;}
+  .cta:active{transform:scale(.97);}
+  .swatch{border:none; cursor:pointer; transition:transform .12s ease;}
+  .swatch:active{transform:scale(.92);}
+  .chip{display:flex; flex-direction:column; align-items:center; gap:5px; border:none; cursor:pointer; background:none; transition:transform .12s ease;}
+  .chip:active{transform:scale(.95);}
+  .cambtn{position:absolute; width:34px; height:34px; border-radius:50%; background:#fff; border:none; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 6px rgba(36,55,70,.18); cursor:pointer;}
+  .cambtn:active{transform:scale(.93);}
+  .screen{width:390px; height:844px; background:#F4EFE6; display:flex; flex-direction:column; box-sizing:border-box; overflow:hidden;}
+  @media (max-width:430px){ .screen{width:100vw; height:100vh;} body{align-items:stretch;} }
+</style>
+</head>
+<body>
+
+<div class="screen">
+
+  <div style="display:flex; align-items:center; justify-content:space-between; padding:18px 22px 4px;">
+    <a href="puntos.html" aria-label="Cerrar" style="width:34px; height:34px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 1px 3px rgba(0,0,0,.06);">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#243746" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </a>
+    <h1 class="serif" style="font-size:17px; font-weight:600;">Comparte tu logro</h1>
+    <a href="inicio.html" style="font-size:13.5px; font-weight:700; color:#8A8667;">Publicar</a>
+  </div>
+
+  <div style="flex:1; padding:6px 22px 0; overflow:hidden;">
+
+    <div id="photoWrap" style="border-radius:20px; padding:12px; box-shadow:0 2px 10px rgba(36,55,70,.08);">
+      <div style="position:relative;">
+        <div id="photoBox" style="width:100%; height:148px; border-radius:14px; overflow:hidden; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#EDEAD9,#F1D3D6);">
+          <img id="photoImg" src="" alt="" style="width:100%; height:100%; object-fit:cover; display:none;">
+          <svg id="photoIcon" width="36" height="36" viewBox="0 0 24 24" fill="#8A8667" aria-hidden="true">
+            <path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8Z"/>
+          </svg>
+        </div>
+        <button type="button" class="cambtn" style="right:8px; bottom:8px;" onclick="cyclePhoto()" aria-label="Cambiar foto">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#243746" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l1.5-2h7L17 7h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13" r="3.4"/></svg>
+        </button>
+      </div>
+      <div id="photoLabel" style="font-size:11px; color:#5B6B74; font-weight:600; margin-top:6px; text-align:center;"></div>
+    </div>
+
+    <div style="margin-top:10px;">
+      <div class="lbl">Fondo de tu publicación</div>
+      <div style="display:flex; gap:10px; margin-top:7px;">
+        <button type="button" class="swatch" id="sw-crema" onclick="setBg('crema')" aria-label="Fondo crema"></button>
+        <button type="button" class="swatch" id="sw-navy" onclick="setBg('navy')" aria-label="Fondo azul noche"></button>
+        <button type="button" class="swatch" id="sw-sage" onclick="setBg('sage')" aria-label="Fondo salvia"></button>
+        <button type="button" class="swatch" id="sw-blush" onclick="setBg('blush')" aria-label="Fondo rosa"></button>
+        <button type="button" class="swatch" id="sw-gold" onclick="setBg('gold')" aria-label="Fondo dorado"></button>
+      </div>
+    </div>
+
+    <div style="display:flex; align-items:flex-start; gap:10px; margin-top:12px;">
+      <div style="width:30px; height:30px; border-radius:50%; background:#EDEAD9; display:flex; align-items:center; justify-content:center; font-weight:700; color:#8A8667; font-size:12px; flex-shrink:0;">L</div>
+      <div style="flex:1;">
+        <label for="caption" class="lbl" style="display:block; margin-bottom:3px;">Tu descripción</label>
+        <textarea id="caption" rows="2" style="width:100%; border:none; background:transparent; font-size:13px; resize:none; color:#243746; padding:0;">Hoy cuidé de mí misma 🌿 Terminé mi reto de envases y me gané mi clase de pilates. #MiMomento</textarea>
+      </div>
+    </div>
+
+    <div style="margin-top:10px;">
+      <div class="lbl">Comparte en tus redes</div>
+      <div style="display:flex; justify-content:space-between; margin-top:8px; padding:0 6px;">
+
+        <button type="button" class="chip" onclick="toggleNet('ig')">
+          <span id="ic-ig" class="chipicon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17" cy="7" r="0.6" fill="currentColor"/></svg>
+          </span>
+          <span id="lb-ig" class="chiplabel">Instagram</span>
+        </button>
+
+        <button type="button" class="chip" onclick="toggleNet('tiktok')">
+          <span id="ic-tiktok" class="chipicon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4v9.6a3.6 3.6 0 1 1-3-3.55"/><path d="M14 4c.6 2.2 2.2 3.6 4.4 3.9"/></svg>
+          </span>
+          <span id="lb-tiktok" class="chiplabel">TikTok</span>
+        </button>
+
+        <button type="button" class="chip" onclick="toggleNet('whatsapp')">
+          <span id="ic-whatsapp" class="chipicon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19.5 6.1 16A7.5 7.5 0 1 1 9 18.4Z"/><path d="M9 10.3c0 2.8 2 4.7 4.7 4.7"/></svg>
+          </span>
+          <span id="lb-whatsapp" class="chiplabel">WhatsApp</span>
+        </button>
+
+        <button type="button" class="chip" onclick="toggleNet('fb')">
+          <span id="ic-fb" class="chipicon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 21v-7h2.3l.4-3h-2.7V9c0-.9.3-1.5 1.7-1.5h1.1V4.9c-.6-.1-1.4-.2-2.2-.2-2.3 0-3.9 1.4-3.9 3.9v2.4H9v3h2.2v7Z"/></svg>
+          </span>
+          <span id="lb-fb" class="chiplabel">Facebook</span>
+        </button>
+
+      </div>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:9px; background:#EDEAD9; border-radius:14px; padding:10px 14px; margin-top:10px;">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#8A8667" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="9.5" width="16" height="10" rx="1"/><path d="M4 9.5h16v3.2H4z"/><path d="M12 9.5V20M12 9.5C12 6 8.8 4.2 7 5.6c-1.4 1.1-.4 3.9 5 3.9Zm0 0C12 6 15.2 4.2 17 5.6c1.4 1.1.4 3.9-5 3.9Z"/></svg>
+      <span style="font-size:11.5px; color:#243746; font-weight:600;">Publicar te da 1 envase extra de regalo</span>
+    </div>
+  </div>
+
+  <div style="padding:10px 22px 12px;">
+    <a href="inicio.html" class="cta" style="display:flex; align-items:center; justify-content:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px;">
+      Publicar en mi feed
+    </a>
+  </div>
+
+  <nav style="display:flex; justify-content:space-around; align-items:center; padding:10px 10px 20px; background:#fff; border-top:1px solid #E7E0D3;" aria-label="Navegación principal">
+    <a href="inicio.html" class="navitem">
+      <span class="navcircle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-9"/></svg></span>
+      Inicio
+    </a>
+    <a href="reciclar.html" class="navitem">
+      <span class="navcircle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11A8 8 0 0 0 6.3 6.3L4 8.6"/><path d="M4 4v4.6h4.6"/><path d="M4 13a8 8 0 0 0 13.7 4.7L20 15.4"/><path d="M20 20v-4.6h-4.6"/></svg></span>
+      Reciclar
+    </a>
+    <a href="puntos.html" class="navitem">
+      <span class="navcircle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.4 5.9.7-4.3 4.1 1 5.9L12 16.8l-5.2 2.8 1-5.9-4.3-4.1 5.9-.7z"/></svg></span>
+      Puntos
+    </a>
+    <a href="compartir.html" class="navitem active" aria-current="page">
+      <span class="navcircle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="2.4"/><circle cx="17" cy="5.5" r="2.4"/><circle cx="17" cy="18.5" r="2.4"/><path d="M8.1 10.8 14.9 7M8.1 13.2 14.9 17"/></svg></span>
+      Compartir
+    </a>
+  </nav>
+</div>
+
+<script>
+  var BG = { crema:'#F4EFE6', navy:'#243746', sage:'#BCD1CA', blush:'#F1D3D6', gold:'#E8C86B' };
+  var PHOTOS = [
+    { src: null, alt: 'Tu logro de hoy', label: 'Tu logro de hoy' },
+    { src: 'assets/fachada.jpg', alt: 'Fachada de Ice & Wellness', label: 'En la fachada' },
+    { src: 'assets/tienda.jpg', alt: 'Interior de Ice & Wellness', label: 'Dentro de la tienda' }
+  ];
+  var state = { bg: 'crema', photoIdx: 0, networks: { ig:true, tiktok:false, whatsapp:false, fb:false } };
+
+  function render() {
+    document.getElementById('photoWrap').style.background = BG[state.bg];
+    var p = PHOTOS[state.photoIdx];
+    var img = document.getElementById('photoImg');
+    var icon = document.getElementById('photoIcon');
+    if (p.src) { img.src = p.src; img.alt = p.alt; img.style.display = 'block'; icon.style.display = 'none'; }
+    else { img.style.display = 'none'; icon.style.display = 'block'; }
+    document.getElementById('photoLabel').textContent = p.label;
+
+    ['crema','navy','sage','blush','gold'].forEach(function(key){
+      var el = document.getElementById('sw-'+key);
+      var selected = state.bg === key;
+      el.style.background = BG[key];
+      el.style.width = '28px'; el.style.height = '28px'; el.style.borderRadius = '50%';
+      el.style.boxShadow = selected ? '0 0 0 3px #243746, 0 0 0 5px #fff' : '0 0 0 1px rgba(36,55,70,.1)';
+    });
+
+    ['ig','tiktok','whatsapp','fb'].forEach(function(key){
+      var on = state.networks[key];
+      var ic = document.getElementById('ic-'+key);
+      var lb = document.getElementById('lb-'+key);
+      ic.style.cssText += 'width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:'+(on?'#243746':'#EDEAD9')+'; color:'+(on?'#fff':'#8A8667')+';';
+      lb.style.cssText += 'font-size:9.5px; font-weight:700; color:'+(on?'#243746':'#B9B2A0')+';';
+    });
+  }
+  function setBg(key){ state.bg = key; render(); }
+  function cyclePhoto(){ state.photoIdx = (state.photoIdx + 1) % PHOTOS.length; render(); }
+  function toggleNet(key){ state.networks[key] = !state.networks[key]; render(); }
+  render();
+</script>
+</body>
+</html>
