@@ -17,6 +17,9 @@
   .ic{width:42px; height:42px; border-radius:50%; background:#EDEAD9; color:#8A8667; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
   .flrow{display:flex; align-items:center; gap:12px; width:100%; text-align:left; background:#fff; border:1.5px solid #E7E0D3; border-radius:14px; padding:11px 13px;}
   .flic{width:36px; height:36px; border-radius:50%; background:#EDEAD9; color:#8A8667; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .flrow.selected{border-color:#243746; background:#F7F4EC;}
+  .pedido-btn[disabled]{opacity:.4; cursor:not-allowed;}
+  .confirm{animation:fadeUp .4s cubic-bezier(.16,.8,.3,1);}
   @keyframes fadeUp{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
   @keyframes popIn{from{opacity:0; transform:scale(.6);} to{opacity:1; transform:scale(1);}}
   @keyframes optIn{from{opacity:0; transform:translateX(-10px);} to{opacity:1; transform:translateX(0);}}
@@ -89,6 +92,7 @@
 
   <!-- Vista 2: resultados -->
   <div id="view-energia" class="result hidden" style="flex:1; padding:8px 24px 20px; display:flex; flex-direction:column;">
+    <div class="result-body" style="display:contents;">
     <div style="text-align:center;">
       <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#5B6B74; font-weight:700;">Tus sabores recomendados</div>
       <div class="ic" style="width:56px; height:56px; margin:12px auto 0;">
@@ -97,16 +101,28 @@
       <p style="font-size:12.5px; color:#5B6B74; line-height:1.5; margin:10px 0 0;">Porque hoy tienes energía, estos sabores cítricos y vibrantes te van a acompañar bien.</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:9px; margin-top:16px;">
-      <div class="flrow"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span style="display:block; font-weight:700; font-size:13.5px;">Maracuyá y mango</span><span style="display:block; font-size:11px; color:#5B6B74;">Cítrico y tropical</span></span></div>
-      <div class="flrow"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span style="display:block; font-weight:700; font-size:13.5px;">Naranja y zanahoria</span><span style="display:block; font-size:11px; color:#5B6B74;">Dulce y vitamínico</span></span></div>
-      <div class="flrow"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span style="display:block; font-weight:700; font-size:13.5px;">Piña colada</span><span style="display:block; font-size:11px; color:#5B6B74;">Fresco y tropical</span></span></div>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Maracuyá y mango</span><span style="display:block; font-size:11px; color:#5B6B74;">Cítrico y tropical</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Naranja y zanahoria</span><span style="display:block; font-size:11px; color:#5B6B74;">Dulce y vitamínico</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Piña colada</span><span style="display:block; font-size:11px; color:#5B6B74;">Fresco y tropical</span></span></button>
     </div>
     <div style="flex:1;"></div>
-    <a href="inicio.html" class="cta" style="display:block; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:14px;">Continuar a mi pedido</a>
+    <button type="button" class="cta pedido-btn" disabled onclick="generarPedido(this)" style="display:block; width:100%; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:14px; border:none; font-family:inherit; cursor:pointer;">Generar pedido</button>
     <button type="button" onclick="reset()" style="margin-top:9px; background:none; border:none; font-size:12px; color:#5B6B74; text-decoration:underline; font-family:inherit; align-self:center;">Elegir otra respuesta</button>
+    </div>
+
+    <div class="confirm hidden" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 10px;">
+      <div style="width:64px; height:64px; border-radius:50%; background:#E8C86B; color:#243746; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h2 class="serif" style="font-size:20px; font-weight:600; margin:0;">¡Pedido generado!</h2>
+      <p style="font-size:13.5px; color:#5B6B74; margin:10px 0 2px; line-height:1.5;"><span class="confirm-flavor" style="font-weight:700; color:#243746;"></span></p>
+      <p style="font-size:13.5px; color:#5B6B74; margin:4px 0 0; line-height:1.5;">Preséntate en caja para reclamarlo.</p>
+      <a href="inicio.html" class="cta" style="display:block; width:100%; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:26px;">Volver al inicio</a>
+    </div>
   </div>
 
   <div id="view-calma" class="result hidden" style="flex:1; padding:8px 24px 20px; display:flex; flex-direction:column;">
+    <div class="result-body" style="display:contents;">
     <div style="text-align:center;">
       <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#5B6B74; font-weight:700;">Tus sabores recomendados</div>
       <div class="ic" style="width:56px; height:56px; margin:12px auto 0;">
@@ -115,16 +131,28 @@
       <p style="font-size:12.5px; color:#5B6B74; line-height:1.5; margin:10px 0 0;">Porque hoy buscas calma, estas combinaciones suaves invitan a bajar el ritmo.</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:9px; margin-top:16px;">
-      <div class="flrow"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span style="display:block; font-weight:700; font-size:13.5px;">Lavanda y miel</span><span style="display:block; font-size:11px; color:#5B6B74;">Floral y suave</span></span></div>
-      <div class="flrow"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span style="display:block; font-weight:700; font-size:13.5px;">Manzanilla y pera</span><span style="display:block; font-size:11px; color:#5B6B74;">Suave y relajante</span></span></div>
-      <div class="flrow"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span style="display:block; font-weight:700; font-size:13.5px;">Vainilla y canela</span><span style="display:block; font-size:11px; color:#5B6B74;">Cálido y envolvente</span></span></div>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Lavanda y miel</span><span style="display:block; font-size:11px; color:#5B6B74;">Floral y suave</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Manzanilla y pera</span><span style="display:block; font-size:11px; color:#5B6B74;">Suave y relajante</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Vainilla y canela</span><span style="display:block; font-size:11px; color:#5B6B74;">Cálido y envolvente</span></span></button>
     </div>
     <div style="flex:1;"></div>
-    <a href="inicio.html" class="cta" style="display:block; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:14px;">Continuar a mi pedido</a>
+    <button type="button" class="cta pedido-btn" disabled onclick="generarPedido(this)" style="display:block; width:100%; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:14px; border:none; font-family:inherit; cursor:pointer;">Generar pedido</button>
     <button type="button" onclick="reset()" style="margin-top:9px; background:none; border:none; font-size:12px; color:#5B6B74; text-decoration:underline; font-family:inherit; align-self:center;">Elegir otra respuesta</button>
+    </div>
+
+    <div class="confirm hidden" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 10px;">
+      <div style="width:64px; height:64px; border-radius:50%; background:#E8C86B; color:#243746; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h2 class="serif" style="font-size:20px; font-weight:600; margin:0;">¡Pedido generado!</h2>
+      <p style="font-size:13.5px; color:#5B6B74; margin:10px 0 2px; line-height:1.5;"><span class="confirm-flavor" style="font-weight:700; color:#243746;"></span></p>
+      <p style="font-size:13.5px; color:#5B6B74; margin:4px 0 0; line-height:1.5;">Preséntate en caja para reclamarlo.</p>
+      <a href="inicio.html" class="cta" style="display:block; width:100%; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:26px;">Volver al inicio</a>
+    </div>
   </div>
 
   <div id="view-dulce" class="result hidden" style="flex:1; padding:8px 24px 20px; display:flex; flex-direction:column;">
+    <div class="result-body" style="display:contents;">
     <div style="text-align:center;">
       <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#5B6B74; font-weight:700;">Tus sabores recomendados</div>
       <div class="ic" style="width:56px; height:56px; margin:12px auto 0;">
@@ -133,16 +161,28 @@
       <p style="font-size:12.5px; color:#5B6B74; line-height:1.5; margin:10px 0 0;">Porque hoy quieres consentirte, estas mezclas intensas te van a dar ese gusto.</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:9px; margin-top:16px;">
-      <div class="flrow"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span style="display:block; font-weight:700; font-size:13.5px;">Dulce de leche con brownie</span><span style="display:block; font-size:11px; color:#5B6B74;">Intenso y achocolatado</span></span></div>
-      <div class="flrow"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span style="display:block; font-weight:700; font-size:13.5px;">Nutella con avellanas</span><span style="display:block; font-size:11px; color:#5B6B74;">Cremoso y nuezado</span></span></div>
-      <div class="flrow"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span style="display:block; font-weight:700; font-size:13.5px;">Red velvet</span><span style="display:block; font-size:11px; color:#5B6B74;">Suave con toque de cacao</span></span></div>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Dulce de leche con brownie</span><span style="display:block; font-size:11px; color:#5B6B74;">Intenso y achocolatado</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Nutella con avellanas</span><span style="display:block; font-size:11px; color:#5B6B74;">Cremoso y nuezado</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Red velvet</span><span style="display:block; font-size:11px; color:#5B6B74;">Suave con toque de cacao</span></span></button>
     </div>
     <div style="flex:1;"></div>
-    <a href="inicio.html" class="cta" style="display:block; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:14px;">Continuar a mi pedido</a>
+    <button type="button" class="cta pedido-btn" disabled onclick="generarPedido(this)" style="display:block; width:100%; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:14px; border:none; font-family:inherit; cursor:pointer;">Generar pedido</button>
     <button type="button" onclick="reset()" style="margin-top:9px; background:none; border:none; font-size:12px; color:#5B6B74; text-decoration:underline; font-family:inherit; align-self:center;">Elegir otra respuesta</button>
+    </div>
+
+    <div class="confirm hidden" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 10px;">
+      <div style="width:64px; height:64px; border-radius:50%; background:#E8C86B; color:#243746; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h2 class="serif" style="font-size:20px; font-weight:600; margin:0;">¡Pedido generado!</h2>
+      <p style="font-size:13.5px; color:#5B6B74; margin:10px 0 2px; line-height:1.5;"><span class="confirm-flavor" style="font-weight:700; color:#243746;"></span></p>
+      <p style="font-size:13.5px; color:#5B6B74; margin:4px 0 0; line-height:1.5;">Preséntate en caja para reclamarlo.</p>
+      <a href="inicio.html" class="cta" style="display:block; width:100%; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:26px;">Volver al inicio</a>
+    </div>
   </div>
 
   <div id="view-fresco" class="result hidden" style="flex:1; padding:8px 24px 20px; display:flex; flex-direction:column;">
+    <div class="result-body" style="display:contents;">
     <div style="text-align:center;">
       <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#5B6B74; font-weight:700;">Tus sabores recomendados</div>
       <div class="ic" style="width:56px; height:56px; margin:12px auto 0;">
@@ -151,13 +191,24 @@
       <p style="font-size:12.5px; color:#5B6B74; line-height:1.5; margin:10px 0 0;">Porque sientes el día pesado, estos sabores ligeros refrescan al instante.</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:9px; margin-top:16px;">
-      <div class="flrow"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span style="display:block; font-weight:700; font-size:13.5px;">Menta y limón</span><span style="display:block; font-size:11px; color:#5B6B74;">Ligero y cítrico</span></span></div>
-      <div class="flrow"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span style="display:block; font-weight:700; font-size:13.5px;">Sandía y hierbabuena</span><span style="display:block; font-size:11px; color:#5B6B74;">Fresco de verano</span></span></div>
-      <div class="flrow"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span style="display:block; font-weight:700; font-size:13.5px;">Yogurt griego con frutos rojos</span><span style="display:block; font-size:11px; color:#5B6B74;">Ligero y balanceado</span></span></div>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Menta y limón</span><span style="display:block; font-size:11px; color:#5B6B74;">Ligero y cítrico</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Sandía y hierbabuena</span><span style="display:block; font-size:11px; color:#5B6B74;">Fresco de verano</span></span></button>
+      <button type="button" class="flrow" onclick="selectFlavor(this)"><span class="flic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 6V3"/></svg></span><span><span class="flavor-name" style="display:block; font-weight:700; font-size:13.5px;">Yogurt griego con frutos rojos</span><span style="display:block; font-size:11px; color:#5B6B74;">Ligero y balanceado</span></span></button>
     </div>
     <div style="flex:1;"></div>
-    <a href="inicio.html" class="cta" style="display:block; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:14px;">Continuar a mi pedido</a>
+    <button type="button" class="cta pedido-btn" disabled onclick="generarPedido(this)" style="display:block; width:100%; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:14px; border:none; font-family:inherit; cursor:pointer;">Generar pedido</button>
     <button type="button" onclick="reset()" style="margin-top:9px; background:none; border:none; font-size:12px; color:#5B6B74; text-decoration:underline; font-family:inherit; align-self:center;">Elegir otra respuesta</button>
+    </div>
+
+    <div class="confirm hidden" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 10px;">
+      <div style="width:64px; height:64px; border-radius:50%; background:#E8C86B; color:#243746; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h2 class="serif" style="font-size:20px; font-weight:600; margin:0;">¡Pedido generado!</h2>
+      <p style="font-size:13.5px; color:#5B6B74; margin:10px 0 2px; line-height:1.5;"><span class="confirm-flavor" style="font-weight:700; color:#243746;"></span></p>
+      <p style="font-size:13.5px; color:#5B6B74; margin:4px 0 0; line-height:1.5;">Preséntate en caja para reclamarlo.</p>
+      <a href="inicio.html" class="cta" style="display:block; width:100%; text-align:center; background:#243746; color:#fff; font-weight:600; font-size:15px; padding:15px; border-radius:16px; margin-top:26px;">Volver al inicio</a>
+    </div>
   </div>
 
 </div>
@@ -168,7 +219,30 @@
     VIEWS.forEach(function(v){ document.getElementById(v).classList.toggle('hidden', v !== id); });
   }
   function pick(mood){ show('view-' + mood); }
-  function reset(){ show('view-pick'); }
+  function reset(){
+    document.querySelectorAll('.result-body').forEach(function(b){ b.classList.remove('hidden'); });
+    document.querySelectorAll('.confirm').forEach(function(c){ c.classList.add('hidden'); });
+    document.querySelectorAll('.flrow.selected').forEach(function(r){ r.classList.remove('selected'); });
+    document.querySelectorAll('.pedido-btn').forEach(function(b){ b.disabled = true; delete b.dataset.flavor; });
+    show('view-pick');
+  }
+  function selectFlavor(btn){
+    var view = btn.closest('.result');
+    view.querySelectorAll('.flrow').forEach(function(r){ r.classList.remove('selected'); });
+    btn.classList.add('selected');
+    var name = btn.querySelector('.flavor-name').textContent;
+    var pedidoBtn = view.querySelector('.pedido-btn');
+    pedidoBtn.disabled = false;
+    pedidoBtn.dataset.flavor = name;
+  }
+  function generarPedido(btn){
+    var view = btn.closest('.result');
+    var flavor = btn.dataset.flavor || '';
+    view.querySelector('.result-body').classList.add('hidden');
+    var confirmPanel = view.querySelector('.confirm');
+    confirmPanel.querySelector('.confirm-flavor').textContent = flavor;
+    confirmPanel.classList.remove('hidden');
+  }
 </script>
 </body>
 </html>
